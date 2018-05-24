@@ -1,0 +1,54 @@
+<view class="pro_filter">
+  <view class="pro_filter_items">
+    <view class="item" bindtap="show">
+      <view rd="0-24-3" >综合
+        <view class="icon_tri"></view>
+      </view>
+    </view>
+    <view class="item  has" bindtap="set" data-key="hot">销量</view>
+    <view class="item  has" bindtap="set" data-key="favorite_count">收藏</view>
+    <view class="item btn_sf">筛选</view>
+  </view>
+  <view class="item_options" 
+  style="display:{{menuShow?'block':'none'}}">
+    <view class="selection">
+      <view class="J_ping {{sortColumn==null?'active':''}}"
+       bindtap="set">综合</view>
+      <view class="J_ping {{sortColumn=='new'?'active':''}}"
+       bindtap="set" data-key="new">最新上架</view>
+      <view class="J_ping {{sortColumn=='low-to-high'?'active':''}}"
+       bindtap="set" data-key="low-to-high">价格最低</view>
+      <view class="J_ping {{sortColumn=='high-to-low'?'active':''}}"
+       bindtap="set" data-key="high-to-low">价格最高</view>
+      <view class="J_ping {{sortColumn=='review_count'?'active':''}}"
+       bindtap="set" data-key="review_count">评价最多</view>
+    </view>
+  </view>
+</view>
+
+
+<view class="ul">
+  <view class="li" wx:for="{{products}}">
+    <view class="item">
+      <view class="pic" style="background-image:url(http:{{item.one.image}})"></view>
+      <view class="content">
+        <view class="name">{{item.one.name}}</view>
+        <view class="price">
+          <view class="symbol">{{item.two.price.symbol}}</view>
+          {{item.two.price.value}}
+        </view>
+      </view>
+    </view>
+
+    <view class="item">
+      <view class="pic" style="background-image:url(http:{{item.two.image}})"></view>
+      <view class="content">
+        <view class="name">{{item.two.name}}</view>
+        <view class="price">
+          <view class="symbol">{{item.two.price.symbol}}</view>
+          {{item.two.price.value}}
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

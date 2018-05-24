@@ -1,0 +1,60 @@
+/* pages/category/category.wxss */
+
+.left {
+  width: 170rpx;
+  height: 100vh;
+  background: #f8f8f8;
+  float: left;
+}
+
+.li {
+  height: 92rpx;
+  line-height: 92rpx;
+  text-align: center;
+  font-size: 9pt;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.li.active {
+  background: #fff;
+  color: #f10215;
+}
+
+.right {
+  box-sizing: border-box;
+  float: right;
+  width: 580rpx;
+  height: 100vh;
+  padding: 38rpx 14rpx 0 14rpx;
+}
+
+.dl {
+  overflow: hidden;
+}
+
+.dt {
+  height: 48rpx;
+  line-height: 48rpx;
+  font-weight: bold;
+  font-size: 8pt;
+}
+
+.dd {
+  height: 214rpx;
+  width: 168rpx;
+  float: left;
+  text-align: center;
+}
+
+.pic {
+  display: inline-block;
+  width: 140rpx;
+  height: 140rpx;
+  background: #ccc;
+}
+
+.name {
+  font-size: 7pt;
+}
