@@ -1,32 +1,24 @@
 <view class="pro_filter">
   <view class="pro_filter_items">
-    <view class="item" bindtap="show">
-      <view rd="0-24-3" >综合
+    <view class="item" bindtap="toggleMenuShow">
+      <view rd="0-24-3">综合
         <view class="icon_tri"></view>
       </view>
     </view>
-    <view class="item  has" bindtap="set" data-key="hot">销量</view>
-    <view class="item  has" bindtap="set" data-key="favorite_count">收藏</view>
-    <view class="item btn_sf">筛选</view>
+    <view class="item  has" bindtap="setSortColumn" data-key="hot">销量</view>
+    <view class="item  has" bindtap="setSortColumn" data-key="favorite_count">收藏</view>
+    <view class="item" bindtap="toggleFilterBox">筛选</view>
   </view>
-  <view class="item_options" 
-  style="display:{{menuShow?'block':'none'}}">
+  <view class="item_options" style="display:{{menuShow?'block':'none'}}">
     <view class="selection">
-      <view class="J_ping {{sortColumn==null?'active':''}}"
-       bindtap="set">综合</view>
-      <view class="J_ping {{sortColumn=='new'?'active':''}}"
-       bindtap="set" data-key="new">最新上架</view>
-      <view class="J_ping {{sortColumn=='low-to-high'?'active':''}}"
-       bindtap="set" data-key="low-to-high">价格最低</view>
-      <view class="J_ping {{sortColumn=='high-to-low'?'active':''}}"
-       bindtap="set" data-key="high-to-low">价格最高</view>
-      <view class="J_ping {{sortColumn=='review_count'?'active':''}}"
-       bindtap="set" data-key="review_count">评价最多</view>
+      <view class="J_ping {{sortColumn==null?'active':''}}" bindtap="setSortColumn">综合</view>
+      <view class="J_ping {{sortColumn=='new'?'active':''}}" bindtap="setSortColumn" data-key="new">最新上架</view>
+      <view class="J_ping {{sortColumn=='low-to-high'?'active':''}}" bindtap="setSortColumn" data-key="low-to-high">价格最低</view>
+      <view class="J_ping {{sortColumn=='high-to-low'?'active':''}}" bindtap="setSortColumn" data-key="high-to-low">价格最高</view>
+      <view class="J_ping {{sortColumn=='review_count'?'active':''}}" bindtap="setSortColumn" data-key="review_count">评价最多</view>
     </view>
   </view>
 </view>
-
-
 <view class="ul">
   <view class="li" wx:for="{{products}}">
     <view class="item">
@@ -52,3 +44,36 @@
     </view>
   </view>
 </view>
+
+<scroll-view scroll-y="true" bindtap="toggleFilterBox" class="filter-box {{filterBoxShow?'active':''}}">
+  <view class="filter-box-inner" catchtap>
+    <view class="filter-cate-item">
+      <view class="item-title" bindtap="clearFilterAttrs">
+        清除选项
+      </view>
+    </view>
+
+
+
+    <view class="filter-cate-item" wx:for="{{filterInfo}}" wx:for-index="k">
+      <view class="item-title">
+        {{item.label}}
+      </view>
+      <view class="ul">
+        <view class="li" bindtap="setFilterAttrs" data-key="{{k}}" data-value="{{f._id}}" wx:for="{{item.items}}" wx:for-item="f">
+          {{f.label}}({{f.count}})
+        </view>
+      </view>
+    </view>
+    <view class="filter-cate-item">
+      <view class="item-title">
+        价格
+      </view>
+      <view class="ul">
+        <view class="li" wx:for="{{filterPrice}}">
+          {{item.label}}
+        </view>
+      </view>
+    </view>
+  </view>
+</scroll-view>

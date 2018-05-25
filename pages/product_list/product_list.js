@@ -5,21 +5,89 @@ Page({
    * 页面的初始数据
    */
   data: {
-    menuShow: false,
-    sortColumn: null,
+    // 分类id
     id: null,
+    // 当前页数
     currentPage: 1,
+    // 总页数
     totalPage: null,
-    products: null
+    // 产品
+    products: null,
+    // 筛选菜单是否显示
+    filterBoxShow: false,
+    // 综合的下拉菜单是否显示
+    menuShow: false,
+    // 产品的所有属性
+    filterInfo: null,
+    // 产品的所有价格区间
+    filterPrice: null,
+    // 用户选择的排序方式
+    sortColumn: null,
+    // 用户选择的产品属性筛选条件
+    filterAttrs: {},
+  },
+
+  // 查询数据
+  fetchData: function () {
+    util.showLoading();
+    wx.request({
+      url: util.url + 'catalog/category/index',
+      data: {
+        categoryId: this.data.id,
+        sortColumn: this.data.sortColumn,
+        filterAttrs: this.data.filterAttrs
+      },
+      success: res => {
+        wx.hideLoading();
+        this.setData({
+          products: res.data.data.products,
+          filterInfo: res.data.data.filter_info,
+          currentPage: 1,
+          totalPage: res.data.data.page_count
+        })
+      },
+      fail: () => util.fail()
+    })
+  },
+
+  // 清除筛选条件
+  clearFilterAttrs: function () {
+    this.setData({
+      filterAttrs: {},
+      filterBoxShow: false,
+    });
+    this.fetchData();
+  },
+
+  // 设置筛选条件 
+  setFilterAttrs: function (e) {
+    let k = e.currentTarget.dataset.key;
+    let v = e.currentTarget.dataset.value;
+    let o = this.data.filterAttrs;
+    o[k] = v;
+    this.setData({
+      filterAttrs: o,
+      filterBoxShow: false
+    })
+    this.fetchData();
   },
   
-  show: function () {
+  // 设置FilterBox是否显示
+  toggleFilterBox: function () {
+    this.setData({
+      filterBoxShow: !this.data.filterBoxShow,
+    })
+  },
+
+  // 设置综合的下拉菜单是否显示
+  toggleMenuShow: function () {
     this.setData({
       menuShow: !this.data.menuShow
     })
   },
-
-  set: function (e) {
+ 
+  // 设置产品排序股则
+  setSortColumn: function (e) {
     if (this.data.menuShow) {
       this.setData({
         menuShow: false
@@ -30,23 +98,10 @@ Page({
         sortColumn: null
       })
     };
-
     this.setData({
       sortColumn: e.currentTarget.dataset.key
     })
-    util.showLoading();
-    wx.request({
-      url: util.url + 'catalog/category/index?categoryId=' + this.data.id + "&sortColumn=" + this.data.sortColumn,
-      success: res => {
-        wx.hideLoading();
-        this.setData({
-          products: res.data.data.products,
-          currentPage: 1,
-          totalPage: res.data.data.page_count
-        });
-      },
-      fail: () => util.fail()
-    })
+    this.fetchData();
   },
 
   /**
@@ -58,20 +113,7 @@ Page({
     })
   },
 
-  fetchData: function () {
-    util.showLoading();
-    wx.request({
-      url: util.url + 'catalog/category/index?categoryId=' + this.data.id,
-      success: (res) => {
-        wx.hideLoading();
-        this.setData({
-          totalPage: res.data.data.page_count,
-          products: res.data.data.products
-        })
-      },
-      fail: () => util.fail()
-    })
-  },
+  
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -120,7 +162,13 @@ Page({
     }
     util.showLoading();
     wx.request({
-      url: util.url + 'catalog/category/product?categoryId=' + this.data.id + '&p=' + this.data.currentPage,
+      url: util.url + 'catalog/category/product',
+      data: {
+        p: this.data.currentPage,
+        categoryId: this.data.id,
+        sortColumn: this.data.sortColumn,
+        filterAttrs: this.data.filterAttrs
+      },
       success: res => {
         wx.hideLoading();
         let arr = this.data.products.concat(res.data.data.products);
