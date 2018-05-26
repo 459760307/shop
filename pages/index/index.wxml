@@ -14,19 +14,17 @@
   </view>
 </view>
 <swiper indicator-dots="true" autoplay='true'>
-  <swiper-item wx:for="{{result.advertiseImg.bigImgList}}">
+  <swiper-item wx:for="{{result.advertiseImg.bigImgList}}" wx:key="{{index}}">
     <view class="swiper-item" style="height:375rpx; background:url({{item.imgUrl}}) no-repeat center center / 100% auto"></view>
   </swiper-item>
 </swiper>
 <view style="padding:20rpx;display:flex;justify-content:space-between">
-<view 
-wx:for="{{result.advertiseImg.smallImgList}}"
-style="width:340rpx;height:288rpx;background:url({{item.imgUrl}}) no-repeat center center/100% auto">
-</view>
+  <view wx:for="{{result.advertiseImg.smallImgList}}" wx:key="{{index}}" style="width:340rpx;height:288rpx;background:url({{item.imgUrl}}) no-repeat center center/100% auto">
+  </view>
 </view>
 
 <view style="padding:20rpx">
-  <view class="row" wx:for="{{result.productList}}">
+  <view class="row" wx:for="{{result.productList}}" wx:key="{{index}}">
     <view class="col">
       <view style="height:516rpx;background:url({{item.one.image}}) no-repeat center center/100% auto"></view>
     </view>

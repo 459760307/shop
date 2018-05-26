@@ -1,4 +1,5 @@
 /**app.wxss**/
-view{
+
+view {
   box-sizing: border-box;
 }

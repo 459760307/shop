@@ -71,10 +71,11 @@ Page({
     })
     this.fetchData();
   },
-  
+
   // 设置FilterBox是否显示
   toggleFilterBox: function () {
     this.setData({
+      menuShow: false,
       filterBoxShow: !this.data.filterBoxShow,
     })
   },
@@ -85,7 +86,7 @@ Page({
       menuShow: !this.data.menuShow
     })
   },
- 
+
   // 设置产品排序股则
   setSortColumn: function (e) {
     if (this.data.menuShow) {
@@ -109,11 +110,11 @@ Page({
    */
   onLoad: function (options) {
     this.setData({
-      id: options.id || '57bea0e3f656f275313bf56e'
+      id: options.id || '5b06b677c2dfca6ccf1e93fb'
     })
   },
 
-  
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

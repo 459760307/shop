@@ -8,7 +8,6 @@
 }
 
 .li .pic {
-  padding: 20rpx;
   float: left;
   height: 240rpx;
   width: 240rpx;
@@ -21,11 +20,11 @@
   line-height: 40rpx;
   padding: 0 20rpx 16rpx 20rpx;
   color: #333;
-  font-size: 10pt;
   float: left;
 }
 
 .li .name {
+  font-size:28rpx;
   height: 76rpx;
   margin-top: 16rpx;
   word-wrap: break-word;
@@ -34,12 +33,13 @@
 
 .li .price {
   padding-top: 30rpx;
+  font-size:36rpx;
   color: #e93b3d;
 }
 
 .li .symbol {
   display: inline-block;
-  font-size: 7pt;
+  font-size: 24rpx;
 }
 
 .pro_filter {
@@ -55,7 +55,7 @@
 
 .pro_filter_items .item {
   padding: 0 20rpx;
-  font-size: 10pt;
+  font-size: 27rpx;
   flex: 1;
   text-align: center;
 }
@@ -76,7 +76,7 @@
   line-height: 90rpx;
   background: #fff;
   height: 90rpx;
-  font-size: 10pt;
+  font-size: 28rpx;
   padding: 0 70rpx 0 40rpx;
 }
 
@@ -111,7 +111,7 @@
 }
 
 .filter-box-inner {
-  font-size: 10pt;
+  font-size: 28rpx;
   float: right;
   width: 544rpx;
   background: #e8e8ed;

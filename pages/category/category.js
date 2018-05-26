@@ -23,17 +23,17 @@ Page({
   },
 
   fetchData: function () {
-   util.showLoading();
+    util.showLoading();
     wx.request({
-      url: util.url+'general/base/menu',
+      url: util.url + 'general/base/menu',
       success: (res) => {
         wx.hideLoading();
         this.setData({
           categories: res.data,
-          current: '57b6abfff656f246653bf570'
+          current: '5b06b677c2dfca6ccf1e935f'
         })
       },
-      fail: ()=>util.fail()
+      fail: () => util.fail()
     })
   },
   /**

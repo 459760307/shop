@@ -16,9 +16,9 @@ Page({
   },
 
   fetchData: function () {
-   util.showLoading();
+    util.showLoading();
     wx.request({
-      url: util.url+'cms/home/index',
+      url: util.url + 'cms/home/index',
       success: res => {
         wx.hideLoading();
         this.setData({

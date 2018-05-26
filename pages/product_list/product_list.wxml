@@ -5,33 +5,33 @@
         <view class="icon_tri"></view>
       </view>
     </view>
-    <view class="item  has" bindtap="setSortColumn" data-key="hot">销量</view>
-    <view class="item  has" bindtap="setSortColumn" data-key="favorite_count">收藏</view>
+    <view class="item  has" bindtap="setSortColumn" data-key="low-to-high">价格最高</view>
+    <view class="item  has" bindtap="setSortColumn" data-key="high-to-low">价格最低</view>
     <view class="item" bindtap="toggleFilterBox">筛选</view>
   </view>
   <view class="item_options" style="display:{{menuShow?'block':'none'}}">
     <view class="selection">
       <view class="J_ping {{sortColumn==null?'active':''}}" bindtap="setSortColumn">综合</view>
       <view class="J_ping {{sortColumn=='new'?'active':''}}" bindtap="setSortColumn" data-key="new">最新上架</view>
-      <view class="J_ping {{sortColumn=='low-to-high'?'active':''}}" bindtap="setSortColumn" data-key="low-to-high">价格最低</view>
-      <view class="J_ping {{sortColumn=='high-to-low'?'active':''}}" bindtap="setSortColumn" data-key="high-to-low">价格最高</view>
+      <view class="J_ping {{sortColumn=='low-to-high'?'active':''}}" bindtap="setSortColumn" data-key="favorite_count">收藏</view>
+      <view class="J_ping {{sortColumn=='hot'?'active':''}}" bindtap="setSortColumn" data-key="hot">销量</view>
       <view class="J_ping {{sortColumn=='review_count'?'active':''}}" bindtap="setSortColumn" data-key="review_count">评价最多</view>
     </view>
   </view>
 </view>
 <view class="ul">
-  <view class="li" wx:for="{{products}}">
+  <view class="li" wx:for="{{products}}" wx:key="{{index}}">
     <view class="item">
       <view class="pic" style="background-image:url(http:{{item.one.image}})"></view>
       <view class="content">
         <view class="name">{{item.one.name}}</view>
         <view class="price">
-          <view class="symbol">{{item.two.price.symbol}}</view>
-          {{item.two.price.value}}
+          <view class="symbol">{{item.one.price.symbol}}</view>
+          {{item.one.price.value}}
         </view>
       </view>
     </view>
-
+    <block wx:if="{{item.two.name}}">
     <view class="item">
       <view class="pic" style="background-image:url(http:{{item.two.image}})"></view>
       <view class="content">
@@ -42,6 +42,7 @@
         </view>
       </view>
     </view>
+    </block>
   </view>
 </view>
 
@@ -53,14 +54,12 @@
       </view>
     </view>
 
-
-
-    <view class="filter-cate-item" wx:for="{{filterInfo}}" wx:for-index="k">
+    <view class="filter-cate-item" wx:key="{{k}}" wx:for="{{filterInfo}}" wx:for-index="k">
       <view class="item-title">
         {{item.label}}
       </view>
       <view class="ul">
-        <view class="li" bindtap="setFilterAttrs" data-key="{{k}}" data-value="{{f._id}}" wx:for="{{item.items}}" wx:for-item="f">
+        <view class="li" bindtap="setFilterAttrs" data-key="{{k}}" data-value="{{f._id}}" wx:key="{{f._id}}" wx:for="{{item.items}}" wx:for-item="f">
           {{f.label}}({{f.count}})
         </view>
       </view>
@@ -70,7 +69,7 @@
         价格
       </view>
       <view class="ul">
-        <view class="li" wx:for="{{filterPrice}}">
+        <view class="li" wx:key="{{index}}" wx:for="{{filterPrice}}">
           {{item.label}}
         </view>
       </view>
