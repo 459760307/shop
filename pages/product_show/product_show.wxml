@@ -1,6 +1,6 @@
 <swiper indicator-dots="true" style="height:750rpx;min-height:750rpx">
   <swiper-item wx:for="{{product_data.image_detail}}" wx:key="{{index}}">
-    <view class="swiper-item" style="height:750rpx; background:url({{item}}) no-repeat center center / 100% auto"></view>
+    <view class="swiper-item" style="height:750rpx; background:url(http:{{item}}) no-repeat center center / 100% auto"></view>
   </swiper-item>
 </swiper>
 
@@ -58,7 +58,7 @@
 <view class="detail_gap"></view>
 
 <view class="tab-head">
-  <view class="tab-head-item {{visibleTabKey==item.key?'active':''}}" data-key="{{item.key}}" wx:for="{{[{name:'厂家',key:'vendors'},{name:'描述',key:'desc'}]}}" bindtap="changeVisibleKey">
+  <view class="tab-head-item {{visibleTabKey==item.key?'active':''}}" data-key="{{item.key}}" wx:key="{{index}}" wx:for="{{[{name:'厂家',key:'vendors'},{name:'描述',key:'desc'}]}}" bindtap="changeVisibleKey">
     {{item.name}}
   </view>
 </view>
@@ -100,7 +100,7 @@
             </view> -->
 
             <view class="img-section">
-              <view  style="background-image:url({{item}})" wx:for="{{product_data.image_detail}}" class="lazy"></view>
+              <view  style="background-image:url(http:{{item}})" wx:key="{{index}}" wx:for="{{product_data.image_detail}}" class="lazy"></view>
             </view>
 
           </view>

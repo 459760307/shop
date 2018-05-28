@@ -5,8 +5,8 @@
         <view class="icon_tri"></view>
       </view>
     </view>
-    <view class="item  has" bindtap="setSortColumn" data-key="low-to-high">价格最高</view>
-    <view class="item  has" bindtap="setSortColumn" data-key="high-to-low">价格最低</view>
+    <view class="item  has" bindtap="setSortColumn" data-key="low-to-high">价格最低</view>
+    <view class="item  has" bindtap="setSortColumn" data-key="high-to-low">价格最高</view>
     <view class="item" bindtap="toggleFilterBox">筛选</view>
   </view>
   <view class="item_options" style="display:{{menuShow?'block':'none'}}">
