@@ -1,0 +1,39 @@
+<swiper indicator-dots="true" style="height:750rpx;min-height:750rpx">
+  <swiper-item wx:for="{{product_data.image_detail}}" wx:key="{{index}}">
+    <view class="swiper-item" style="height:750rpx; background:url({{item}}) no-repeat center center / 100% auto"></view>
+  </swiper-item>
+</swiper>
+<view class="fn_wrap">
+  <view class="fn_goods_name">
+    {{product_data.name}}
+  </view>
+  <view class="heart"></view>
+</view>
+<view class="price_wrap">
+  <view class="price">{{product_data.price_info.price.value}}</view>
+  <view class="col_right">
+    {{product_data.reviw_rate_star_average}}
+  </view>
+</view>
+<view class="sku_wrap">
+  <view class="propertyDiv" wx:for="{{product_data.options}}" wx:key="{{index}}">
+    <view class="sku">
+      <view>{{item.label}}</view>
+      <view class="sku_list">
+        <view class="option option_disabled option_selected"
+        wx:for="{{item.value}}" wx:for-item="f" wx:key="f._id.$oid">
+        {{f.attr_val}}
+        </view>
+      </view>
+    </view>
+  </view>
+  <input type="text"/>
+  <view class="sku sku_num" id="skuNum">
+    <view>数量</view>
+    <view class="num_wrap">
+      <view class="minus minus_disabled" id="minus" ></view>
+      
+      <view class="plus" id="plus"></view>
+    </view>
+  </view>
+</view>

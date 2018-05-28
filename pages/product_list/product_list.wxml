@@ -21,7 +21,7 @@
 </view>
 <view class="ul">
   <view class="li" wx:for="{{products}}" wx:key="{{index}}">
-    <view class="item">
+    <navigator url="/pages/product_show/product_show?product_id={{item.one._id}}" class="item">
       <view class="pic" style="background-image:url(http:{{item.one.image}})"></view>
       <view class="content">
         <view class="name">{{item.one.name}}</view>
@@ -30,9 +30,9 @@
           {{item.one.price.value}}
         </view>
       </view>
-    </view>
+    </navigator>
     <block wx:if="{{item.two.name}}">
-    <view class="item">
+    <navigator url="/pages/product_show/product_show?product_id={{item.two._id}}" class="item">
       <view class="pic" style="background-image:url(http:{{item.two.image}})"></view>
       <view class="content">
         <view class="name">{{item.two.name}}</view>
@@ -41,7 +41,7 @@
           {{item.two.price.value}}
         </view>
       </view>
-    </view>
+    </navigator>
     </block>
   </view>
 </view>

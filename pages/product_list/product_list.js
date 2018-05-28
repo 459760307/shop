@@ -110,7 +110,8 @@ Page({
    */
   onLoad: function (options) {
     this.setData({
-      id: options.id || '5b06b677c2dfca6ccf1e93fb'
+      // id: options.id || '5b06b677c2dfca6ccf1e93fb'
+      id: options.id || '57bea0e3f656f275313bf56e'
     })
   },
 

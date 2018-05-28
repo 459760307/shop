@@ -15,4 +15,5 @@ module.exports = {
   showLoading: showLoading,
   fail:fail,
   url:'http://appserver.uekuek.com/'
+  // url:'http://appserver.fecshoptest.com/'
 }
