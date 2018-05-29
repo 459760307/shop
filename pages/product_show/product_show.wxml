@@ -9,7 +9,7 @@
     <view class="fn_text_wrap">
       {{product_data.name}}
     </view>
-    <view class="heart"></view>
+    <view bindtap="addToFavorite" class="heart"></view>
   </view>
 
 </view>

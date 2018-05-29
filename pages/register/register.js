@@ -1,4 +1,4 @@
-// pages/vendors_info/vendors_info.js
+// pages/register/register.js
 const util = require('../../utils/util.js');
 Page({
 
@@ -6,7 +6,36 @@ Page({
    * 页面的初始数据
    */
   data: {
-    vendors_info:null
+    formData:{
+      email: null,
+      password: null,
+      firstname: null,
+      lastname: null,
+      captcha: null
+    },
+    captchaPic:null
+  },
+  submit:function(){
+    util.showLoading();
+    wx.request({
+      url: util.url +'customer/register/account',
+      header:{
+        'fecshop-uuid': wx.getStorageSync('uuid')
+      },
+      data:this.data.formData,
+      success:res=>{
+        wx.hideLoading();
+        console.log(res);
+      },
+      fail:()=>util.fail()
+    })
+  },
+  updateFormData:function(e){
+    let o = this.data.formData;
+    o[e.currentTarget.dataset.key] = e.detail.value;
+    this.setData({
+      formData:o
+    })
   },
 
   /**
@@ -27,19 +56,14 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    util.showLoading();
-    if(!this.data.vendors_info){
-      wx.request({
-        url: util.url+'database.json',
-        success:(res)=>{
-          wx.hideLoading();
-          this.setData({
-            vendors_info:res.data
-          })
-        },
-        fail:()=>util.fail()
-      })
-    }
+    wx.request({
+      url: util.url + 'customer/site/captcha',
+      success:res=>{
+        this.setData({
+          captchaPic:res.data.data.image
+        })
+      }
+    })
   },
 
   /**

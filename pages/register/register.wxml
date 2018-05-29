@@ -1,0 +1,10 @@
+<!--pages/register/register.wxml-->
+<input wx:for="{{formData}}"
+       type="text"
+       placeholder="{{index}}"
+       bindinput="updateFormData"
+       data-key="{{index}}"
+       value="{{item}}"
+></input>
+<view style="width:260rpx;height:60rpx;background:url(data:image/gif;base64,{{captchaPic}}) no-repeat center center/100% auto"></view>
+<view bindtap="submit"> 提交</view>

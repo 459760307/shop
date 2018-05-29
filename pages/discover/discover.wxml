@@ -20,7 +20,7 @@
       </navigator>
 
 
-      <view class="graphic-separation graphic-col02-sm">
+      <navigator url="/pages/customer_info/customer_info" class="graphic-separation graphic-col02-sm">
         <view class="J_ping">
           <view class="real-show">
             <view class="graphic-text">
@@ -33,7 +33,7 @@
             </view>
           </view>
         </view>
-      </view>
+      </navigator>
 
     </view>
   </view>

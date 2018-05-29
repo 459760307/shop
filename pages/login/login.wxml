@@ -1,0 +1,2 @@
+<!--pages/login/login.wxml-->
+<navigator url="/pages/register/register">注册</navigator>
