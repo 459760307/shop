@@ -1,15 +1,15 @@
 {
   "pages": [
+    "pages/discover/discover",
+    "pages/vendors_info/vendors_info",
     "pages/index/index",
     "pages/register/register",
     "pages/login/login",
     "pages/product_show/product_show",
-    "pages/discover/discover",
     "pages/product_list/product_list",
     "pages/category/category",
     "pages/me/me",
     "pages/cart/cart",
-    "pages/vendors_info/vendors_info",
     "pages/customer_info/customer_info"
   ],
   "window": {
