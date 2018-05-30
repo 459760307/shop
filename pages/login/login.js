@@ -33,9 +33,11 @@ Page({
           // 记录access_token
           wx.setStorage({
             key:'access-token',
-            data: res.header['Access-Token']
+            data: res.header['Access-Token'],
+            success:function(){
+              wx.navigateBack()
+            }
           })
-          wx.navigateBack()
         }
       },
       fail: () => util.fail()

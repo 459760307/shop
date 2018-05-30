@@ -1,16 +1,18 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/me/me",
+    "pages/favorite/favorite",
+    "pages/discover/discover",
     "pages/register/register",
     "pages/product_show/product_show",
     "pages/login/login",
-    "pages/discover/discover",
     "pages/vendors_info/vendors_info",
     "pages/product_list/product_list",
     "pages/category/category",
-    "pages/me/me",
     "pages/cart/cart",
     "pages/customer_info/customer_info"
+    
   ],
   "window": {
     "backgroundTextStyle": "white",

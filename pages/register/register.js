@@ -10,7 +10,7 @@ Page({
       email: null,
       password: null,
       firstname: '',
-      lastname: 'adfafada',
+      lastname: 'shop_user',
       // captcha:null
     },
     // captchaPic:null
@@ -27,14 +27,21 @@ Page({
       data: this.data.formData,
       success: res => {
         wx.hideLoading();
-        if (res.data.code == 200) {
+        if (res.data.code == 200 || res.data.code == 0) {
           // 记录access_token
           wx.setStorage({
             key: 'access-token',
-            data: res.header['Access-Token']
+            data: res.header['Access-Token'],
+            success: function () {
+              wx.navigateBack({
+                delta: 2
+              })
+            }
           })
-          wx.navigateBack({
-            delta: 2
+        } else {
+          wx.showToast({
+            title: res.data.data.error,
+            icon: 'none'
           })
         }
       },
