@@ -1,19 +1,19 @@
-const showLoading = (tip="正在加载")=>{
+const showLoading = (tip = "正在加载") => {
   wx.showLoading({
     title: tip,
-    mask:true
+    mask: true
   })
 }
-const fail = function(tip="加载失败"){
+const fail = function (tip = "加载失败") {
   wx.hideLoading();
   wx.showToast({
     title: tip,
-    icon:'none'
+    icon: 'none'
   })
 }
 module.exports = {
   showLoading: showLoading,
-  fail:fail,
-  url:'http://appserver.uekuek.com/'
-  // url:'http://appserver.fecshoptest.com/'
+  fail: fail,
+  // url:'http://appserver.uekuek.com/'
+  url: 'http://appserver.fecshoptest.com/'
 }

@@ -15,8 +15,8 @@
 </view>
 <view class="price_wrap">
   <view class="price">
-  {{product_data.price_info.price.symbol}}
-  <view style="display:inline-block;font-size:36rpx">{{product_data.price_info.price.value}}</view>
+    {{product_data.price_info.price.symbol}}
+    <view style="display:inline-block;font-size:36rpx">{{product_data.price_info.price.value}}</view>
   </view>
   <view class="col_right">
     <!-- {{product_data.reviw_rate_star_average}} -->
@@ -45,7 +45,7 @@
         <view bindtap="minusSkuNum" class="minus {{sku_num ===1 ? 'minus_disabled':''}}">
           -
         </view>
-        <input type="number" bindinput="setSkuNum" class="num" value="{{sku_num}}"/>
+        <input type="number" bindinput="setSkuNum" class="num" value="{{sku_num}}" />
         <view class="plus" bindtap="plusSkuNum">
           +
         </view>
@@ -64,7 +64,7 @@
 </view>
 
 <view class="tab-item" style="display:{{visibleTabKey=='vendors'?'block':'none'}}">
-  
+
 </view>
 
 <view class="tab-item" style="display:{{visibleTabKey=='desc'?'block':'none'}}">
@@ -73,15 +73,15 @@
       <view id="tab1" class="tab active">
         <view class="content-block">
           <view class="text-description">
-            
-            
+
+
             <view class="table" style="margin-bottom:40rpx">
               <view class="tr" wx:for="{{product_data.groupAttrArr}}" wx:key="{{index}}">
                 <view class="td">{{index}}</view>
                 <view class="td">{{item}}</view>
               </view>
             </view>
-           
+
             <!-- <view style="margin-bottom:40rpx">
               <view id="result_box" lang="zh-CN">
                 <view>颜色：黑色，蓝色，灰色，红色，白色</view>
@@ -100,7 +100,7 @@
             </view> -->
 
             <view class="img-section">
-              <view  style="background-image:url(http:{{item}})" wx:key="{{index}}" wx:for="{{product_data.image_detail}}" class="lazy"></view>
+              <view style="background-image:url(http:{{item}})" wx:key="{{index}}" wx:for="{{product_data.image_detail}}" class="lazy"></view>
             </view>
 
           </view>

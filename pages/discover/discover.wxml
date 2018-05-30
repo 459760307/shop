@@ -10,11 +10,11 @@
               <view class="graphic-tit">商家信息</view>
               <view class="graphic-wz" style="color:#D663E1">品类齐全</view>
             </view>
-            <view class="graphic-img">
+            <!-- <view class="graphic-img">
 
               <view class="img" style="background: no-repeat center center/100% auto"></view>
 
-            </view>
+            </view> -->
           </view>
         </view>
       </navigator>
@@ -27,10 +27,10 @@
               <view class="graphic-tit" style="color: rgb(0, 0, 0);">客户信息</view>
               <view class="graphic-wz" style="color:#D663E1">直接拨打电话</view>
             </view>
-            <view class="graphic-img">
+            <!-- <view class="graphic-img">
               <view class="img" style="background: no-repeat center center/100% auto"></view>
 
-            </view>
+            </view> -->
           </view>
         </view>
       </navigator>
@@ -49,11 +49,11 @@
               <view class="graphic-tit">物流信息</view>
               <view class="graphic-wz" style="color:#D663E1">实时更新</view>
             </view>
-            <view class="graphic-img">
+            <!-- <view class="graphic-img">
               
               <view class="img" style="background: no-repeat center center/100% auto"></view>
 
-            </view>
+            </view> -->
           </view>
         </view>
       </view>
@@ -66,11 +66,11 @@
               <view class="graphic-tit" style="color: rgb(0, 0, 0);">行业信息</view>
               <view class="graphic-wz" style="color:#D663E1">动态早知道</view>
             </view>
-            <view class="graphic-img">
+            <!-- <view class="graphic-img">
              
               <view class="img" style="background: no-repeat center center/100% auto"></view>
             
-            </view>
+            </view> -->
           </view>
         </view>
       </view>

@@ -11,25 +11,33 @@ Page({
     product_data: null,
     product_id: null,
   },
-  addToFavorite:function(){
+  addToFavorite: function () {
     util.showLoading();
     wx.request({
-      url: util.url+'catalog/product/favorite',
-      data:{
-        product_id:this.data.product_id
+      url: util.url + 'catalog/product/favorite',
+      data: {
+        product_id: this.data.product_id
       },
-      success:res=>{
-        console.log(res);
+      header: {
+        'access-token': wx.getStorageSync('access-token')
+      },
+      success: res => {
         wx.hideLoading();
-        if(res.data.code === 1100003){
+        if (res.data.code === 200) {
+          wx.showToast({
+            title: '收藏成功',
+            icon: 'success'
+          })
+        } else if (res.data.code === 1100003) {
           wx.setStorage({
             key: "uuid",
             data: res.header['Fecshop-Uuid']
           });
-          wx.navigateTo({url:'/pages/login/login'})
+         
+          wx.navigateTo({ url: '/pages/login/login' })
         }
       },
-      fail:()=>util.fail()
+      fail: () => util.fail()
     })
   },
 

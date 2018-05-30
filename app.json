@@ -1,11 +1,11 @@
 {
   "pages": [
-    "pages/discover/discover",
-    "pages/vendors_info/vendors_info",
     "pages/index/index",
     "pages/register/register",
-    "pages/login/login",
     "pages/product_show/product_show",
+    "pages/login/login",
+    "pages/discover/discover",
+    "pages/vendors_info/vendors_info",
     "pages/product_list/product_list",
     "pages/category/category",
     "pages/me/me",
