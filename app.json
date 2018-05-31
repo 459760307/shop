@@ -1,16 +1,18 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/cart/cart",
+    "pages/product_show/product_show",
     "pages/me/me",
     "pages/favorite/favorite",
     "pages/discover/discover",
     "pages/register/register",
-    "pages/product_show/product_show",
+    
     "pages/login/login",
     "pages/vendors_info/vendors_info",
     "pages/product_list/product_list",
     "pages/category/category",
-    "pages/cart/cart",
+    
     "pages/customer_info/customer_info"
     
   ],

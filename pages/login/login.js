@@ -31,12 +31,18 @@ Page({
         wx.hideLoading();
         if(res.data.code==200){
           // 记录access_token
+          wx.setStorageSync("uuid",res.header['Fecshop-Uuid']);
           wx.setStorage({
             key:'access-token',
             data: res.header['Access-Token'],
             success:function(){
               wx.navigateBack()
             }
+          })
+        }else{
+          wx.showToast({
+            title: res.data.message,
+            icon:'none'
           })
         }
       },

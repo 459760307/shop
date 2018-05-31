@@ -10,6 +10,57 @@ Page({
     sku_num: 1,
     product_data: null,
     product_id: null,
+
+    cart_num:0,
+    cart_products:null,
+    shouldAdd:true,
+  },
+  addToCart:function(){
+    util.showLoading();
+    if(this.data.cart_products){
+      this.data.cart_products.forEach(v => {
+        if (v.product_id === this.data.product_id) {
+          this.setData({
+            shouldAdd:false
+          })
+        }
+      })
+    }
+    if(this.data.shouldAdd){
+      wx.request({
+        url: util.url + 'checkout/cart/add',
+        method: 'POST',
+        data: {
+          custom_option: {},
+          product_id: this.data.product_id,
+          qty: this.data.sku_num
+        },
+        header: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+          'access-token': wx.getStorageSync('access-token'),
+          'fecshop-uuid': wx.getStorageSync('uuid')
+        },
+        success: res => {
+          wx.hideLoading();
+          if (res.data.code === 200) {
+            this.setData({
+              cart_num: res.data.data.items_count,
+              shouldAdd:false,
+            })
+          } else if (res.data.code === 1100003) {
+            wx.navigateTo({ url: '/pages/login/login' })
+          }
+        },
+        fail: () => util.fail()
+      })
+    }else{
+      wx.showToast({
+        title: '已经在购物车中了',
+        icon:'none'
+      })
+    }
+
+    
   },
   addToFavorite: function () {
     util.showLoading();
@@ -29,11 +80,6 @@ Page({
             icon: 'success'
           })
         } else if (res.data.code === 1100003) {
-          wx.setStorage({
-            key: "uuid",
-            data: res.header['Fecshop-Uuid']
-          });
-         
           wx.navigateTo({ url: '/pages/login/login' })
         }
       },
@@ -91,7 +137,8 @@ Page({
       success: res => {
         wx.hideLoading();
         this.setData({
-          product_data: res.data.data.product
+          product_data: res.data.data.product,
+          shouldAdd:true
         })
       },
       fail: () => util.fail()
@@ -112,6 +159,29 @@ Page({
     if (!this.data.product_data) {
       this.fetchData()
     }
+    wx.request({
+      url: util.url + 'checkout/cart/index',
+      header: {
+        'access-token': wx.getStorageSync('access-token'),
+        'fecshop-uuid': wx.getStorageSync('uuid')
+      },
+      success: res => {
+        wx.hideLoading();
+        if (res.data.code === 200) {
+          if (!res.data.data.cart_info) {
+            wx.navigateTo({ url: '/pages/login/login' })
+          } else {
+            this.setData({
+              cart_num: res.data.data.cart_info.items_count,
+              cart_products: res.data.data.cart_info.products
+            })
+          }
+        } else if (res.data.code === 1100003) {
+          wx.navigateTo({ url: '/pages/login/login' })
+        }
+      },
+      fail: () => util.fail()
+    })
   },
 
   /**

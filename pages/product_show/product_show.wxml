@@ -57,6 +57,10 @@
 
 <view class="detail_gap"></view>
 
+
+
+<view class="detail_gap"></view>
+
 <view class="tab-head">
   <view class="tab-head-item {{visibleTabKey==item.key?'active':''}}" data-key="{{item.key}}" wx:key="{{index}}" wx:for="{{[{name:'厂家',key:'vendors'},{name:'描述',key:'desc'}]}}" bindtap="changeVisibleKey">
     {{item.name}}
@@ -108,4 +112,12 @@
       </view>
     </view>
   </view>
+</view>
+<view class="fixed">
+  <navigator open-type="reLaunch" url="/pages/cart/cart" class="cart">
+    购物车
+    <view class="icon {{!shouldAdd?'drop':''}}">{{cart_num}}</view>
+  </navigator>
+  <view class="add" bindtap="addToCart"> 加入购物车</view>
+  <view class="buy" bindtap=""> 立即购买</view>
 </view>
