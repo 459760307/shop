@@ -8,12 +8,12 @@ Page({
   data: {
     selectedAll: null,
     cart_info: null,
-    isEmpty:true,
+    isEmpty: true,
   },
 
-  showDetail:function(e){
+  showDetail: function (e) {
     wx.navigateTo({
-      url:'/pages/product_show/product_show?product_id='+e.currentTarget.dataset.id
+      url: '/pages/product_show/product_show?product_id=' + e.currentTarget.dataset.id
     })
   },
 
@@ -79,8 +79,8 @@ Page({
       fail: () => util.fail()
     })
   },
- 
-  
+
+
   /**
    * 生命周期函数--监听页面加载
    */
@@ -94,7 +94,7 @@ Page({
   onReady: function () {
 
   },
-  
+
   fetchData: function () {
     util.showLoading();
     wx.request({
@@ -109,21 +109,21 @@ Page({
         if (res.data.code === 200) {
           let v = res.data.data.cart_info;
           let n = 0;
-          if(v){
+          if (v) {
             v.products.forEach(item => {
               if (item.active) {
                 n = n + 1
               }
             })
             this.setData({
-              cart_info:v,
+              cart_info: v,
               selectedAll: n == v.products.length,
-              isEmpty:false
+              isEmpty: false
             })
-          }else{
+          } else {
             // 购物车为空
             this.setData({
-              isEmpty:true
+              isEmpty: true
             })
           }
         } else if (res.data.code === 1100003) {
@@ -137,9 +137,9 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    if(!wx.getStorageSync('access-token')){
-      wx.navigateTo({url:'/pages/login/login'})
-    }else{
+    if (!wx.getStorageSync('access-token')) {
+      wx.navigateTo({ url: '/pages/login/login' })
+    } else {
       if (!this.data.cart_info) {
         this.fetchData();
       }

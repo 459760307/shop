@@ -4,9 +4,9 @@
     <view class="username-login login-selected J_ping">
       <view id="account_login_txt">账号密码登录</view>
     </view>
-    <view class="sms-login J_ping">
+    <!-- <view class="sms-login J_ping">
       <view id="sms_login_txt">短信验证码登录</view>
-    </view>
+    </view> -->
   </view>
   <view class="wrap loginPage">
     <view id="username_login" class="login-wrap login-wrap-active">
