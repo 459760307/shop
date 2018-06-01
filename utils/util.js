@@ -14,6 +14,6 @@ const fail = function (tip = "加载失败") {
 module.exports = {
   showLoading: showLoading,
   fail: fail,
-  url:'http://appserver.uekuek.com/'
-  // url: 'http://appserver.fecshoptest.com/'
+  // url:'http://appserver.uekuek.com/'
+  url: 'http://appserver.fecshoptest.com/'
 }
