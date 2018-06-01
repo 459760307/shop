@@ -140,9 +140,9 @@ Page({
     if(!wx.getStorageSync('access-token')){
       wx.navigateTo({url:'/pages/login/login'})
     }else{
-      if (!this.data.cart_info) {
+     
         this.fetchData();
-      }
+      
     }
   },
 
