@@ -13,7 +13,7 @@
 }
 
 .header-search-box {
-   margin-right: 40rpx; 
+  margin-right: 40rpx;
   margin-top: 14rpx;
   height: 60rpx;
 }

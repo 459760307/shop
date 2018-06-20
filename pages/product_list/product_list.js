@@ -28,7 +28,7 @@ Page({
   },
 
   // 查询数据
-  fetchData: function () {
+  fetchData: function() {
     util.showLoading();
     wx.request({
       url: util.url + 'catalog/category/index',
@@ -51,7 +51,7 @@ Page({
   },
 
   // 清除筛选条件
-  clearFilterAttrs: function () {
+  clearFilterAttrs: function() {
     this.setData({
       filterAttrs: {},
       filterBoxShow: false,
@@ -60,7 +60,7 @@ Page({
   },
 
   // 设置筛选条件 
-  setFilterAttrs: function (e) {
+  setFilterAttrs: function(e) {
     let k = e.currentTarget.dataset.key;
     let v = e.currentTarget.dataset.value;
     let o = this.data.filterAttrs;
@@ -73,7 +73,7 @@ Page({
   },
 
   // 设置FilterBox是否显示
-  toggleFilterBox: function () {
+  toggleFilterBox: function() {
     this.setData({
       menuShow: false,
       filterBoxShow: !this.data.filterBoxShow,
@@ -81,14 +81,14 @@ Page({
   },
 
   // 设置综合的下拉菜单是否显示
-  toggleMenuShow: function () {
+  toggleMenuShow: function() {
     this.setData({
       menuShow: !this.data.menuShow
     })
   },
 
   // 设置产品排序股则
-  setSortColumn: function (e) {
+  setSortColumn: function(e) {
     if (this.data.menuShow) {
       this.setData({
         menuShow: false
@@ -108,7 +108,7 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function(options) {
     this.setData({
       // id: options.id || '5b06b677c2dfca6ccf1e93fb'
       id: options.id || '57bea0e3f656f275313bf56e'
@@ -119,13 +119,12 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
-  },
+  onReady: function() {},
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  onShow: function() {
     if (!this.data.products) {
       this.fetchData();
     }
@@ -134,28 +133,28 @@ Page({
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
+  onHide: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
+  onUnload: function() {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
+  onReachBottom: function() {
     this.setData({
       currentPage: this.data.currentPage + 1
     })
@@ -185,7 +184,7 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  onShareAppMessage: function() {
 
   }
 })

@@ -31,10 +31,10 @@
     <navigator open-type="reLaunch" url="/pages/category/category?id=5b06b677c2dfca6ccf1e9361" class="category-item">
       手机配件
     </navigator>
-    <navigator open-type="reLaunch" url="/pages/category/category?id=5b06b677c2dfca6ccf1e9365"  class="category-item">
+    <navigator open-type="reLaunch" url="/pages/category/category?id=5b06b677c2dfca6ccf1e9365" class="category-item">
       摄影摄像
     </navigator>
-    <navigator open-type="reLaunch" url="/pages/category/category?id=5b06b677c2dfca6ccf1e936a"  class="category-item">
+    <navigator open-type="reLaunch" url="/pages/category/category?id=5b06b677c2dfca6ccf1e936a" class="category-item">
       外设产品
     </navigator>
     <navigator open-type="reLaunch" url="/pages/category/category?id=5b06b677c2dfca6ccf1e936c" class="category-item">
@@ -43,17 +43,17 @@
     <navigator open-type="reLaunch" url="/pages/category/category?id=5b06b677c2dfca6ccf1e936f" class="category-item">
       游戏设备
     </navigator>
-    <navigator open-type="reLaunch" url="/pages/category/category?id=5b06b677c2dfca6ccf1e9363"  class="category-item">
+    <navigator open-type="reLaunch" url="/pages/category/category?id=5b06b677c2dfca6ccf1e9363" class="category-item">
       影音娱乐
     </navigator>
-    <navigator open-type="reLaunch" url="/pages/category/category?id=5b06b677c2dfca6ccf1e9368"  class="category-item">
+    <navigator open-type="reLaunch" url="/pages/category/category?id=5b06b677c2dfca6ccf1e9368" class="category-item">
       电子教育
     </navigator>
-    <navigator open-type="reLaunch" url="/pages/category/category?id=5b06b677c2dfca6ccf1e936d"  class="category-item">
+    <navigator open-type="reLaunch" url="/pages/category/category?id=5b06b677c2dfca6ccf1e936d" class="category-item">
       办公设备
     </navigator>
-    <navigator open-type="switchTab" url="/pages/category/category"  class="category-item">
+    <navigator open-type="switchTab" url="/pages/category/category" class="category-item">
       更多
-    </navigator> 
+    </navigator>
   </view>
 </view>

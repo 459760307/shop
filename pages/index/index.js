@@ -1,6 +1,6 @@
 const util = require('../../utils/util.js');
 const bmap = require('../../utils/bmap-wx.min.js');
-const wxMarkerData = []; 
+const wxMarkerData = [];
 Page({
 
   /**
@@ -9,17 +9,16 @@ Page({
   data: {
     result: null,
   },
-  setUserInfo(e) {
-  },
+  setUserInfo(e) {},
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function(options) {
 
   },
 
-  fetchData: function () {
+  fetchData: function() {
     util.showLoading();
     wx.request({
       url: util.url + 'cms/home/index',
@@ -37,34 +36,33 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
-  },
+  onReady: function() {},
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  onShow: function() {
     var that = this;
     // 新建百度地图对象 
     var BMap = new bmap.BMapWX({
       ak: 'VLbTuYloLvgGQOerwCyNyC3t0vx24OKW'
     });
-    var fail = function (data) {
+    var fail = function(data) {
       console.log(data)
     };
-    var success = function (data) {
+    var success = function(data) {
       console.log(data);
       that.setData({
-        city:data.originalData.result.addressComponent.city
+        city: data.originalData.result.addressComponent.city
       })
-      
+
     }
     // 发起regeocoding检索请求 
     BMap.regeocoding({
       fail: fail,
       success: success,
     });
-    
+
     // if (!this.data.result) {
     //   this.fetchData();
     // }
@@ -85,35 +83,35 @@ Page({
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
+  onHide: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
+  onUnload: function() {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
+  onReachBottom: function() {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  onShareAppMessage: function() {
 
   }
 })

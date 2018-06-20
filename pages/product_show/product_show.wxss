@@ -216,69 +216,70 @@
 
 .fixed {
   overflow: hidden;
-  z-index:100000;
+  z-index: 100000;
   position: fixed;
   width: 100%;
   bottom: 0;
   left: 0;
   right: 0;
   margin: 0 auto;
-  background-color: hsla(0,0%,100%,.95);
+  background-color: hsla(0, 0%, 100%, 0.95);
   display: flex;
   align-items: center;
   justify-content: center;
   height: 100rpx;
 }
-.fixed view, .fixed navigator{
-  text-align:center;
+
+.fixed view, .fixed navigator {
+  text-align: center;
   line-height: 100rpx;
-  height:100%;
-  font-size:24rpx;
+  height: 100%;
+  font-size: 24rpx;
 }
 
 .cart {
-  width:30%;
+  width: 30%;
   position: relative;
 }
 
-
 .add {
   background: #ff9600;
-  color:#fff;
-  width:35%;
+  color: #fff;
+  width: 35%;
 }
 
 .buy {
   background: #e4393c;
-  color:#fff;
-  width:35%;
+  color: #fff;
+  width: 35%;
 }
 
 .fixed .icon {
   position: absolute;
-  top:20rpx;
-  right:20rpx;
-  width:26rpx;
-  height:26rpx;
-  border-radius:50%;
-  color:white;
-  background:#e4393c;
-  line-height:26rpx;
-  text-align:center;
-  font-size:14rpx;
-  
-}
-.drop{
-  animation: drop .3s ease;
+  top: 20rpx;
+  right: 20rpx;
+  width: 26rpx;
+  height: 26rpx;
+  border-radius: 50%;
+  color: white;
+  background: #e4393c;
+  line-height: 26rpx;
+  text-align: center;
+  font-size: 14rpx;
 }
 
-@keyframes drop{
-  0%{
-    transform:translateY(-100rpx);
+.drop {
+  animation: drop 0.3s ease;
+}
+
+@keyframes drop {
+  0% {
+    transform: translateY(-100rpx);
     opacity: 0;
   }
-  100%{
-     transform:translateY(0);
+
+  100% {
+    transform: translateY(0);
     opacity: 1;
   }
 }

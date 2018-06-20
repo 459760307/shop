@@ -11,16 +11,14 @@
 </view>
 
 <scroll-view class="left" scroll-y="true">
-  <view 
-  class="li {{index==current?'active':''}}"
-   wx:for="{{vendors_info}}" wx:key="{{index}}" bindtap="fn" data-id="{{index}}">
+  <view class="li {{index==current?'active':''}}" wx:for="{{vendors_info}}" wx:key="{{index}}" bindtap="fn" data-id="{{index}}">
     {{index}}
   </view>
 </scroll-view>
 
 <scroll-view class="right" scroll-y="true">
   <block wx:if="{{vendors_info[current]}}">
-    <view  class="dd" wx:for="{{vendors_info[current]}}" wx:key="{{index}}" wx:for-item="f">
+    <view class="dd" wx:for="{{vendors_info[current]}}" wx:key="{{index}}" wx:for-item="f">
       <!-- <view class="pic" style="background:#eee url({{f.thumbnail}}) no-repeat center center/ 100% auto">
       </view> -->
       <view class="name">{{f.name.value}}</view>

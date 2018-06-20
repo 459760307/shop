@@ -32,16 +32,16 @@
       </view>
     </navigator>
     <block wx:if="{{item.two.name}}">
-    <navigator url="/pages/product_show/product_show?product_id={{item.two._id}}" class="item">
-      <view class="pic" style="background-image:url(http:{{item.two.image}})"></view>
-      <view class="content">
-        <view class="name">{{item.two.name}}</view>
-        <view class="price">
-          <view class="symbol">{{item.two.price.symbol}}</view>
-          {{item.two.price.value}}
+      <navigator url="/pages/product_show/product_show?product_id={{item.two._id}}" class="item">
+        <view class="pic" style="background-image:url(http:{{item.two.image}})"></view>
+        <view class="content">
+          <view class="name">{{item.two.name}}</view>
+          <view class="price">
+            <view class="symbol">{{item.two.price.symbol}}</view>
+            {{item.two.price.value}}
+          </view>
         </view>
-      </view>
-    </navigator>
+      </navigator>
     </block>
   </view>
 </view>

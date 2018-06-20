@@ -76,7 +76,8 @@ input {
   font-size: 28rpx;
   color: #848689;
 }
+
 .btn-active {
-    background-color: #f23030;
-    color: #fff;
+  background-color: #f23030;
+  color: #fff;
 }

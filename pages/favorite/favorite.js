@@ -6,52 +6,52 @@ Page({
    * 页面的初始数据
    */
   data: {
-    favorite_list:null
+    favorite_list: null
   },
 
-  fetchData:function(){
+  fetchData: function() {
     util.showLoading();
     wx.request({
       url: util.url + 'customer/productfavorite/index',
-      header:{
-        'access-token':wx.getStorageSync('access-token')
+      header: {
+        'access-token': wx.getStorageSync('access-token')
       },
-      success:res=>{
+      success: res => {
         wx.hideLoading();
-        if (res.data.code === 1100003){
+        if (res.data.code === 1100003) {
           wx.navigateTo({
             url: '/pages/login/login',
           })
-        }else {
+        } else {
           this.setData({
-            favorite_list:res.data.data.productList
+            favorite_list: res.data.data.productList
           })
         }
-        
+
       },
-      fail:()=>util.fail()
+      fail: () => util.fail()
     })
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-  
+  onLoad: function(options) {
+
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
-  
+  onReady: function() {
+
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
-    if(!this.data.favorite_list){
+  onShow: function() {
+    if (!this.data.favorite_list) {
       this.fetchData();
     }
   },
@@ -59,35 +59,35 @@ Page({
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
-  
+  onHide: function() {
+
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
-  
+  onUnload: function() {
+
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
-  
+  onPullDownRefresh: function() {
+
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
-  
+  onReachBottom: function() {
+
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
-  
+  onShareAppMessage: function() {
+
   }
 })

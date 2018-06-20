@@ -4,14 +4,14 @@ const showLoading = (tip = "正在加载") => {
     mask: true
   })
 }
-const fail = function (tip = "加载失败") {
+const fail = function(tip = "加载失败") {
   wx.hideLoading();
   wx.showToast({
     title: tip,
     icon: 'none'
   })
 }
-const auth = function () {
+const auth = function() {
   if (wx.getStorageSync('access-token')) {
     return true;
   } else {
