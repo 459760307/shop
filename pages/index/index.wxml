@@ -1,35 +1,59 @@
-  <!-- <view class="bar bar-nav">
-  <view class="icon icon-menu pull-left open-panel">
-  </view>
-  <view>
-    <view class="title header_logo">
-      <view class="lazy"></view>
-    </view>
-  </view>
-  <view class="pull-right">
-    <view style="padding-right:0.4rem" class="icon icon-me open-panel">
-    </view>
-    <view style="padding-right:0.4rem" class="icon icon-cart">
-    </view>
-  </view>
-</view>
-<swiper indicator-dots="true" autoplay='true'>
-  <swiper-item wx:for="{{result.advertiseImg.bigImgList}}" wx:key="{{index}}">
-    <view class="swiper-item" style="height:375rpx; background:url({{item.imgUrl}}) no-repeat center center / 100% auto"></view>
-  </swiper-item>
-</swiper>
-<view style="padding:20rpx;display:flex;justify-content:space-between">
-  <view wx:for="{{result.advertiseImg.smallImgList}}" wx:key="{{index}}" style="width:340rpx;height:288rpx;background:url({{item.imgUrl}}) no-repeat center center/100% auto">
-  </view>
-</view>
+<view class="container">
+  <view class="header">
+    <view wx:if="{{city}}">{{city}}</view>
+    <view wx:else>正在定位..</view>
+    <view></view>
 
-<view style="padding:20rpx">
-  <view class="row" wx:for="{{result.productList}}" wx:key="{{index}}">
-    <view class="col">
-      <view style="height:516rpx;background:url({{item.one.image}}) no-repeat center center/100% auto"></view>
+    <view class="header-search-form">
+      <view class="header-search-box" style="margin-right: 32px;">
+        <view class="header-search-input">
+          <view id="search-input-left-icon" class="header-icon-fdj"></view>
+          <view class="hilight2">
+
+          </view>
+        </view>
+      </view>
     </view>
-    <view class="col">
-      <view style="height:516rpx;background:url({{item.two.image}}) no-repeat center center/100% auto"></view>
-    </view>
+
   </view>
-</view>   -->
+  <swiper indicator-dots="true">
+    <block wx:for="{{[1,2,3]}}" wx:key="{{index}}">
+      <swiper-item>
+        <view style="width:100%;height:100%;background:url(https://img1.360buyimg.com/da/s750x366_jfs/t20395/207/995581678/303644/9d6b9e6b/5b1e3ce5Na291ae5e.jpg) no-repeat center center / 100% auto" class="slide-image"> </view>
+      </swiper-item>
+    </block>
+  </swiper>
+
+  <view class="category-list">
+    <navigator open-type="reLaunch" url="/pages/category/category?id=5b06b677c2dfca6ccf1e9362" class="category-item">
+      手机通讯
+    </navigator>
+    <navigator open-type="reLaunch" url="/pages/category/category?id=5b06b677c2dfca6ccf1e9361" class="category-item">
+      手机配件
+    </navigator>
+    <navigator open-type="reLaunch" url="/pages/category/category?id=5b06b677c2dfca6ccf1e9365"  class="category-item">
+      摄影摄像
+    </navigator>
+    <navigator open-type="reLaunch" url="/pages/category/category?id=5b06b677c2dfca6ccf1e936a"  class="category-item">
+      外设产品
+    </navigator>
+    <navigator open-type="reLaunch" url="/pages/category/category?id=5b06b677c2dfca6ccf1e936c" class="category-item">
+      网络产品
+    </navigator>
+    <navigator open-type="reLaunch" url="/pages/category/category?id=5b06b677c2dfca6ccf1e936f" class="category-item">
+      游戏设备
+    </navigator>
+    <navigator open-type="reLaunch" url="/pages/category/category?id=5b06b677c2dfca6ccf1e9363"  class="category-item">
+      影音娱乐
+    </navigator>
+    <navigator open-type="reLaunch" url="/pages/category/category?id=5b06b677c2dfca6ccf1e9368"  class="category-item">
+      电子教育
+    </navigator>
+    <navigator open-type="reLaunch" url="/pages/category/category?id=5b06b677c2dfca6ccf1e936d"  class="category-item">
+      办公设备
+    </navigator>
+    <navigator open-type="switchTab" url="/pages/category/category"  class="category-item">
+      更多
+    </navigator> 
+  </view>
+</view>

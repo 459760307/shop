@@ -38,7 +38,7 @@
 
     </view>
   </view>
-  <view class="propertyDiv">
+  <!-- <view class="propertyDiv">
     <view class="sku sku_num">
       <view class="h3">数量</view>
       <view class="num_wrap">
@@ -52,7 +52,7 @@
       </view>
     </view>
 
-  </view>
+  </view> -->
 </view>
 
 <view class="detail_gap"></view>

@@ -11,9 +11,16 @@ const fail = function (tip = "加载失败") {
     icon: 'none'
   })
 }
+const auth = function () {
+  if (wx.getStorageSync('access-token')) {
+    return true;
+  } else {
+    return false;
+  }
+}
 module.exports = {
   showLoading: showLoading,
   fail: fail,
-  // url:'http://appserver.uekuek.com/'
-  url: 'http://appserver.fecshoptest.com/'
+  auth,
+  url: 'http://appserver.uekuek.com/'
 }

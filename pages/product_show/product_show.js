@@ -156,32 +156,34 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    if (!this.data.product_data) {
-      this.fetchData()
-    }
-    wx.request({
-      url: util.url + 'checkout/cart/index',
-      header: {
-        'access-token': wx.getStorageSync('access-token'),
-        'fecshop-uuid': wx.getStorageSync('uuid')
-      },
-      success: res => {
-        wx.hideLoading();
-        if (res.data.code === 200) {
-          if (!res.data.data.cart_info) {
+    if(util.auth()){
+      if (!this.data.product_data) {
+        this.fetchData()
+      }
+      wx.request({
+        url: util.url + 'checkout/cart/index',
+        header: {
+          'access-token': wx.getStorageSync('access-token'),
+          'fecshop-uuid': wx.getStorageSync('uuid')
+        },
+        success: res => {
+          wx.hideLoading();
+          if (res.data.code === 200) {
+            if (res.data.data.cart_info) {
+              this.setData({
+                cart_num: res.data.data.cart_info.items_count,
+                cart_products: res.data.data.cart_info.products
+              })
+            }
+          } else if (res.data.code === 1100003) {
             wx.navigateTo({ url: '/pages/login/login' })
-          } else {
-            this.setData({
-              cart_num: res.data.data.cart_info.items_count,
-              cart_products: res.data.data.cart_info.products
-            })
           }
-        } else if (res.data.code === 1100003) {
-          wx.navigateTo({ url: '/pages/login/login' })
-        }
-      },
-      fail: () => util.fail()
-    })
+        },
+        fail: () => util.fail()
+      })
+    }else{
+      wx.navigateTo({ url: '/pages/login/login' })
+    }
   },
 
   /**

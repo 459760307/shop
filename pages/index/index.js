@@ -1,11 +1,13 @@
 const util = require('../../utils/util.js');
+const bmap = require('../../utils/bmap-wx.min.js');
+const wxMarkerData = []; 
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    result: null
+    result: null,
   },
   setUserInfo(e) {
   },
@@ -42,21 +44,42 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    if (!this.data.result) {
-      this.fetchData();
-    }
-    // console.log(1);
-    if (!wx.getStorageSync('avatarUrl')) {
-      wx.getUserInfo({
-        lang: 'zh_CN',
-        success: res => {
-          wx.setStorage({
-            key: 'avatarUrl',
-            data: res.userInfo.avatarUrl,
-          })
-        }
+    var that = this;
+    // 新建百度地图对象 
+    var BMap = new bmap.BMapWX({
+      ak: 'VLbTuYloLvgGQOerwCyNyC3t0vx24OKW'
+    });
+    var fail = function (data) {
+      console.log(data)
+    };
+    var success = function (data) {
+      console.log(data);
+      that.setData({
+        city:data.originalData.result.addressComponent.city
       })
+      
     }
+    // 发起regeocoding检索请求 
+    BMap.regeocoding({
+      fail: fail,
+      success: success,
+    });
+    
+    // if (!this.data.result) {
+    //   this.fetchData();
+    // }
+    // // console.log(1);
+    // if (!wx.getStorageSync('avatarUrl')) {
+    //   wx.getUserInfo({
+    //     lang: 'zh_CN',
+    //     success: res => {
+    //       wx.setStorage({
+    //         key: 'avatarUrl',
+    //         data: res.userInfo.avatarUrl,
+    //       })
+    //     }
+    //   })
+    // }
   },
 
   /**

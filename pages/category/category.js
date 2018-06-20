@@ -5,6 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    current_tmp:null,
     current: '',
     categories: null
   },
@@ -19,7 +20,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.setData({
+      current_tmp:options.id
+    })
   },
 
   fetchData: function () {
@@ -30,7 +33,7 @@ Page({
         wx.hideLoading();
         this.setData({
           categories: res.data,
-          current: '5b06b677c2dfca6ccf1e935f'
+          current: this.data.current_tmp||'5b06b677c2dfca6ccf1e935f'
         })
       },
       fail: () => util.fail()
