@@ -114,9 +114,10 @@
   </view>
 </view>
 <view class="fixed">
-  <navigator open-type="reLaunch" url="/pages/cart/cart" class="cart">
+  <navigator open-type="navigateTo" url="/pages/cart_two/cart_two" class="cart">
     购物车
-    <view class="icon {{!shouldAdd?'drop':''}}">{{cart_num}}</view>
+    <view class="">+{{sku_num}}</view>
+    <view class="icon">{{items_count}}</view>
   </navigator>
   <view class="add" bindtap="addToCart"> 加入购物车</view>
   <view class="buy" bindtap=""> 立即购买</view>

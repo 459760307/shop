@@ -11,57 +11,12 @@ Page({
     product_data: null,
     product_id: null,
 
-    cart_num:0,
-    cart_products:null,
-    shouldAdd:true,
+    // 购物车中的商品总数量
+    items_count: 0,
   },
-  addToCart:function(){
-    util.showLoading();
-    if(this.data.cart_products){
-      this.data.cart_products.forEach(v => {
-        if (v.product_id === this.data.product_id) {
-          this.setData({
-            shouldAdd:false
-          })
-        }
-      })
-    }
-    if(this.data.shouldAdd){
-      wx.request({
-        url: util.url + 'checkout/cart/add',
-        method: 'POST',
-        data: {
-          custom_option: {},
-          product_id: this.data.product_id,
-          qty: this.data.sku_num
-        },
-        header: {
-          'Content-Type': 'application/x-www-form-urlencoded',
-          'access-token': wx.getStorageSync('access-token'),
-          'fecshop-uuid': wx.getStorageSync('uuid')
-        },
-        success: res => {
-          wx.hideLoading();
-          if (res.data.code === 200) {
-            this.setData({
-              cart_num: res.data.data.items_count,
-              shouldAdd:false,
-            })
-          } else if (res.data.code === 1100003) {
-            wx.navigateTo({ url: '/pages/login/login' })
-          }
-        },
-        fail: () => util.fail()
-      })
-    }else{
-      wx.showToast({
-        title: '已经在购物车中了',
-        icon:'none'
-      })
-    }
 
-    
-  },
+  
+
   addToFavorite: function () {
     util.showLoading();
     wx.request({
@@ -92,17 +47,20 @@ Page({
       sku_num: Number(e.detail.value)
     })
   },
+
   changeVisibleKey: function (e) {
     this.setData({
       visibleTabKey: e.currentTarget.dataset.key
     })
   },
+
   changeProperty: function (e) {
     this.setData({
       product_id: e.currentTarget.dataset.oid
     })
     this.fetchData();
   },
+
   minusSkuNum: function () {
     if (this.data.sku_num > 1) {
       this.setData({
@@ -110,6 +68,7 @@ Page({
       })
     }
   },
+
   plusSkuNum: function () {
 
     this.setData({
@@ -138,7 +97,7 @@ Page({
         wx.hideLoading();
         this.setData({
           product_data: res.data.data.product,
-          shouldAdd:true
+          shouldAdd: true
         })
       },
       fail: () => util.fail()
@@ -150,6 +109,42 @@ Page({
    */
   onReady: function () {
 
+  },
+
+  addToCart: function () {
+      util.showLoading();
+      wx.request({
+        url: util.url + 'checkout/cart/add',
+        method: 'POST',
+        data: {
+          custom_option: {},
+          product_id: this.data.product_id,
+          qty: this.data.sku_num
+        },
+        header: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+          'Access-Token': wx.getStorageSync('access-token'),
+          'Fecshop-Uuid': wx.getStorageSync('uuid')
+        },
+        success: res => {
+          wx.hideLoading();
+          if (res.data.code === 200) {
+            let v = res.data.data.items_count
+            wx.showToast({
+              title: '加入成功',
+              icon:'success',
+              duration:300
+            })
+            wx.setStorageSync('items_count',v)
+            this.setData({
+              items_count:v
+            })
+          } else if (res.data.code === 1100003) {
+            wx.navigateTo({ url: '/pages/login/login' })
+          }
+        },
+        fail: () => util.fail()
+      })
   },
 
   /**
