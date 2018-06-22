@@ -32,7 +32,7 @@ Page({
       wx.request({
         url: util.url + 'customer_info.json',
         success: res => {
-          wx.hideLoading();
+          util.hideLoading();
           this.setData({
             customer_info: res.data.slice(0, 10)
           })

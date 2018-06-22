@@ -1,26 +1,19 @@
-const showLoading = (tip = "正在加载") => {
-  wx.showLoading({
-    title: tip,
-    mask: true
-  })
+const showLoading = () => {
+  wx.showNavigationBarLoading();
+}
+const hideLoading = () => {
+  wx.hideNavigationBarLoading();
 }
 const fail = function(tip = "加载失败") {
-  wx.hideLoading();
+  wx.hideNavigationBarLoading();
   wx.showToast({
     title: tip,
     icon: 'none'
   })
 }
-const auth = function() {
-  if (wx.getStorageSync('access-token')) {
-    return true;
-  } else {
-    return false;
-  }
-}
 module.exports = {
   showLoading: showLoading,
+  hideLoading: hideLoading,
   fail: fail,
-  auth,
   url: 'http://appserver.uekuek.com/'
 }

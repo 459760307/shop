@@ -28,7 +28,7 @@ Page({
       data: this.data.formData,
       url: util.url + 'customer/login/account',
       success: res => {
-        wx.hideLoading();
+        util.hideLoading();
         if (res.data.code == 200) {
           // 记录access_token
           wx.setStorageSync("uuid", res.header['Fecshop-Uuid']);

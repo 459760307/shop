@@ -240,6 +240,7 @@
 .cart {
   width: 30%;
   position: relative;
+  border-top:1rpx solid #e8e8ed;
 }
 
 .add {

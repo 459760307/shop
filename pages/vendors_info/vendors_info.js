@@ -47,7 +47,7 @@ Page({
     util.showLoading();
     if (!this.data.vendors_info) {
       if (wx.getStorageSync('vendors_info')) {
-        wx.hideLoading();
+        util.hideLoading();
         this.setData({
           vendors_info: wx.getStorageSync('vendors_info')
         })
@@ -55,7 +55,7 @@ Page({
         wx.request({
           url: util.url + 'database.json',
           success: (res) => {
-            wx.hideLoading();
+            util.hideLoading();
             wx.setStorageSync(
               "vendors_info",
               this.formatData(res.data)

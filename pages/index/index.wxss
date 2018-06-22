@@ -64,7 +64,7 @@
   display: flex;
   align-items: flex-end;
   padding-bottom: 10rpx;
-  border: 1rpx solid black;
+  /* border: 1rpx solid black; */
   justify-content: center;
   color: #000;
   font-size: 24rpx;

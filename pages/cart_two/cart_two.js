@@ -9,15 +9,16 @@ Page({
     selectedAll: null,
     cart_info: null,
     isEmpty: true,
+    auth: false
   },
 
-  showDetail: function(e) {
+  showDetail: function (e) {
     wx.navigateTo({
       url: '/pages/product_show/product_show?product_id=' + e.currentTarget.dataset.id
     })
   },
 
-  updateInfo: function(e) {
+  updateInfo: function (e) {
     util.showLoading();
     wx.request({
       url: util.url + 'checkout/cart/updateinfo',
@@ -32,14 +33,14 @@ Page({
         'fecshop-uuid': wx.getStorageSync('uuid')
       },
       success: res => {
-        wx.hideLoading();
+        util.hideLoading();
         this.fetchData();
       },
       fail: () => util.fail()
     })
   },
 
-  toggleSelectOne: function(e) {
+  toggleSelectOne: function (e) {
     util.showLoading();
     wx.request({
       url: util.url + 'checkout/cart/selectone',
@@ -53,14 +54,14 @@ Page({
         'fecshop-uuid': wx.getStorageSync('uuid')
       },
       success: res => {
-        wx.hideLoading();
+        util.hideLoading();
         this.fetchData();
       },
       fail: () => util.fail()
     })
   },
 
-  toggleSelectAll: function() {
+  toggleSelectAll: function () {
     util.showLoading();
     wx.request({
       url: util.url + 'checkout/cart/selectall',
@@ -73,7 +74,7 @@ Page({
         'fecshop-uuid': wx.getStorageSync('uuid')
       },
       success: res => {
-        wx.hideLoading();
+        util.hideLoading();
         this.fetchData();
       },
       fail: () => util.fail()
@@ -84,18 +85,18 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function(options) {
+  onLoad: function (options) {
 
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function() {
+  onReady: function () {
 
   },
 
-  fetchData: function() {
+  fetchData: function () {
     util.showLoading();
     wx.request({
       url: util.url + 'checkout/cart/index',
@@ -105,7 +106,7 @@ Page({
         'fecshop-uuid': wx.getStorageSync('uuid')
       },
       success: res => {
-        wx.hideLoading();
+        wx.hideNavigationBarLoading();
         if (res.data.code === 200) {
           let v = res.data.data.cart_info;
           let n = 0;
@@ -126,9 +127,9 @@ Page({
               isEmpty: true
             })
           }
-        } else if (res.data.code === 1100003) {
-          wx.navigateTo({
-            url: '/pages/login/login'
+        } else {
+          this.setData({
+            auth: true
           })
         }
       },
@@ -138,50 +139,42 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function() {
-    if (!wx.getStorageSync('access-token')) {
-      wx.navigateTo({
-        url: '/pages/login/login'
-      })
-    } else {
-
-      this.fetchData();
-
-    }
+  onShow: function () {
+    this.fetchData();
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function() {
+  onHide: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function() {
+  onUnload: function () {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function() {
+  onPullDownRefresh: function () {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function() {
+  onReachBottom: function () {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function() {
+  onShareAppMessage: function () {
 
   }
 })

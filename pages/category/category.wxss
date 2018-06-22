@@ -93,8 +93,8 @@
 
 .pic {
   display: inline-block;
-  width: 140rpx;
-  height: 140rpx;
+  width: 100rpx;
+  height: 100rpx;
   background: #ccc;
 }
 

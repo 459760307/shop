@@ -38,7 +38,7 @@ Page({
         filterAttrs: this.data.filterAttrs
       },
       success: res => {
-        wx.hideLoading();
+        util.hideLoading();
         this.setData({
           products: res.data.data.products,
           filterInfo: res.data.data.filter_info,
@@ -171,7 +171,7 @@ Page({
         filterAttrs: this.data.filterAttrs
       },
       success: res => {
-        wx.hideLoading();
+        util.hideLoading();
         let arr = this.data.products.concat(res.data.data.products);
         this.setData({
           products: arr

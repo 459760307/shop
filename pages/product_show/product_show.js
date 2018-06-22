@@ -17,7 +17,7 @@ Page({
 
 
 
-  addToFavorite: function() {
+  addToFavorite: function () {
     util.showLoading();
     wx.request({
       url: util.url + 'catalog/product/favorite',
@@ -28,7 +28,7 @@ Page({
         'access-token': wx.getStorageSync('access-token')
       },
       success: res => {
-        wx.hideLoading();
+        util.hideLoading();
         if (res.data.code === 200) {
           wx.showToast({
             title: '收藏成功',
@@ -44,26 +44,26 @@ Page({
     })
   },
 
-  setSkuNum: function(e) {
+  setSkuNum: function (e) {
     this.setData({
       sku_num: Number(e.detail.value)
     })
   },
 
-  changeVisibleKey: function(e) {
+  changeVisibleKey: function (e) {
     this.setData({
       visibleTabKey: e.currentTarget.dataset.key
     })
   },
 
-  changeProperty: function(e) {
+  changeProperty: function (e) {
     this.setData({
       product_id: e.currentTarget.dataset.oid
     })
     this.fetchData();
   },
 
-  minusSkuNum: function() {
+  minusSkuNum: function () {
     if (this.data.sku_num > 1) {
       this.setData({
         sku_num: this.data.sku_num - 1
@@ -71,7 +71,7 @@ Page({
     }
   },
 
-  plusSkuNum: function() {
+  plusSkuNum: function () {
 
     this.setData({
       sku_num: this.data.sku_num + 1
@@ -82,13 +82,13 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function(options) {
+  onLoad: function (options) {
     this.setData({
       product_id: options.product_id || '57bab0d5f656f2940a3bf56e'
     })
   },
 
-  fetchData: function() {
+  fetchData: function () {
     util.showLoading();
     wx.request({
       url: util.url + 'catalog/product/index',
@@ -96,10 +96,9 @@ Page({
         product_id: this.data.product_id
       },
       success: res => {
-        wx.hideLoading();
+        util.hideLoading();
         this.setData({
           product_data: res.data.data.product,
-          shouldAdd: true
         })
       },
       fail: () => util.fail()
@@ -109,11 +108,11 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function() {
+  onReady: function () {
 
   },
 
-  addToCart: function() {
+  addToCart: function () {
     util.showLoading();
     wx.request({
       url: util.url + 'checkout/cart/add',
@@ -129,7 +128,7 @@ Page({
         'Fecshop-Uuid': wx.getStorageSync('uuid')
       },
       success: res => {
-        wx.hideLoading();
+        util.hideLoading();
         if (res.data.code === 200) {
           let v = res.data.data.items_count
           wx.showToast({
@@ -154,73 +153,44 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function() {
-    if (util.auth()) {
-      if (!this.data.product_data) {
-        this.fetchData()
-      }
-      wx.request({
-        url: util.url + 'checkout/cart/index',
-        header: {
-          'access-token': wx.getStorageSync('access-token'),
-          'fecshop-uuid': wx.getStorageSync('uuid')
-        },
-        success: res => {
-          wx.hideLoading();
-          if (res.data.code === 200) {
-            if (res.data.data.cart_info) {
-              this.setData({
-                cart_num: res.data.data.cart_info.items_count,
-                cart_products: res.data.data.cart_info.products
-              })
-            }
-          } else if (res.data.code === 1100003) {
-            wx.navigateTo({
-              url: '/pages/login/login'
-            })
-          }
-        },
-        fail: () => util.fail()
-      })
-    } else {
-      wx.navigateTo({
-        url: '/pages/login/login'
-      })
+  onShow: function () {
+    if (!this.data.product_data) {
+      this.fetchData()
     }
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function() {
+  onHide: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function() {
+  onUnload: function () {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function() {
+  onPullDownRefresh: function () {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function() {
+  onReachBottom: function () {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function() {
+  onShareAppMessage: function () {
 
   }
 })

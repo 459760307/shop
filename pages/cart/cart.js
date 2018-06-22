@@ -9,6 +9,7 @@ Page({
     selectedAll: null,
     cart_info: null,
     isEmpty: true,
+    auth:false
   },
 
   showDetail: function (e) {
@@ -32,7 +33,7 @@ Page({
         'fecshop-uuid': wx.getStorageSync('uuid')
       },
       success: res => {
-        wx.hideLoading();
+        util.hideLoading();
         this.fetchData();
       },
       fail: () => util.fail()
@@ -53,7 +54,7 @@ Page({
         'fecshop-uuid': wx.getStorageSync('uuid')
       },
       success: res => {
-        wx.hideLoading();
+        util.hideLoading();
         this.fetchData();
       },
       fail: () => util.fail()
@@ -73,7 +74,7 @@ Page({
         'fecshop-uuid': wx.getStorageSync('uuid')
       },
       success: res => {
-        wx.hideLoading();
+        util.hideLoading();
         this.fetchData();
       },
       fail: () => util.fail()
@@ -105,7 +106,7 @@ Page({
         'fecshop-uuid': wx.getStorageSync('uuid')
       },
       success: res => {
-        wx.hideLoading();
+        wx.hideNavigationBarLoading();
         if (res.data.code === 200) {
           let v = res.data.data.cart_info;
           let n = 0;
@@ -126,8 +127,10 @@ Page({
               isEmpty: true
             })
           }
-        } else if (res.data.code === 1100003) {
-          wx.navigateTo({ url: '/pages/login/login' })
+        } else {
+          this.setData({
+            auth:true
+          })
         }
       },
       fail: () => util.fail()
@@ -137,13 +140,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    if (!wx.getStorageSync('access-token')) {
-      wx.navigateTo({ url: '/pages/login/login' })
-    } else {
-
       this.fetchData();
-
-    }
   },
 
   /**

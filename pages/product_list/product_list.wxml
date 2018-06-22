@@ -1,20 +1,24 @@
 <view class="pro_filter">
   <view class="pro_filter_items">
-    <view class="item" bindtap="toggleMenuShow">
-      <view rd="0-24-3">综合
-        <view class="icon_tri"></view>
+    <view class="item " bindtap="toggleMenuShow">
+      <view>
+        <view wx:if="{{sortColumn==null}}" class="active">综合排序</view>
+        <view wx:elif="{{sortColumn=='new'}}" class="active">最新上架</view>
+        <view wx:elif="{{sortColumn=='favorite_count'}}" class="active">收藏最多</view>
+        <view wx:elif="{{sortColumn=='review_count'}}" class="active">评价最多</view>
+        <view wx:else="{{sortColumn=='review_count'}}" class="{{sortColumn==null?'active':''}}" bindtap="setSortColumn">综合</view>
       </view>
     </view>
-    <view class="item  has" bindtap="setSortColumn" data-key="low-to-high">价格最低</view>
-    <view class="item  has" bindtap="setSortColumn" data-key="high-to-low">价格最高</view>
-    <view class="item" bindtap="toggleFilterBox">筛选</view>
+    <view class="item  has {{sortColumn=='low-to-high'?'active':''}}" bindtap="setSortColumn" data-key="low-to-high">价格最低</view>
+    <view class="item  has {{sortColumn=='high-to-low'?'active':''}}" bindtap="setSortColumn" data-key="high-to-low">价格最高</view>
+    <!-- <view class="item" bindtap="toggleFilterBox">筛选</view> -->
+    <view class="item  has {{sortColumn=='hot'?'active':''}}" bindtap="setSortColumn" data-key="hot">销量</view>
   </view>
   <view class="item_options" style="display:{{menuShow?'block':'none'}}">
     <view class="selection">
-      <view class="J_ping {{sortColumn==null?'active':''}}" bindtap="setSortColumn">综合</view>
+      <view class="J_ping {{sortColumn==null?'active':''}}" bindtap="setSortColumn">综合排序</view>
       <view class="J_ping {{sortColumn=='new'?'active':''}}" bindtap="setSortColumn" data-key="new">最新上架</view>
-      <view class="J_ping {{sortColumn=='low-to-high'?'active':''}}" bindtap="setSortColumn" data-key="favorite_count">收藏</view>
-      <view class="J_ping {{sortColumn=='hot'?'active':''}}" bindtap="setSortColumn" data-key="hot">销量</view>
+      <view class="J_ping {{sortColumn=='favorite_count'?'active':''}}" bindtap="setSortColumn" data-key="favorite_count">收藏最多</view>
       <view class="J_ping {{sortColumn=='review_count'?'active':''}}" bindtap="setSortColumn" data-key="review_count">评价最多</view>
     </view>
   </view>
@@ -64,7 +68,7 @@
         </view>
       </view>
     </view>
-    <view class="filter-cate-item">
+    <!-- <view class="filter-cate-item">
       <view class="item-title">
         价格
       </view>
@@ -73,6 +77,6 @@
           {{item.label}}
         </view>
       </view>
-    </view>
+    </view> -->
   </view>
 </scroll-view>

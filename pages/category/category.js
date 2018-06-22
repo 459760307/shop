@@ -21,7 +21,7 @@ Page({
    */
   onLoad: function(options) {
     this.setData({
-      current_tmp: options.id
+      current_tmp: options.id||"5b06b677c2dfca6ccf1e935f"
     })
   },
 
@@ -30,7 +30,7 @@ Page({
     wx.request({
       url: util.url + 'general/base/menu',
       success: (res) => {
-        wx.hideLoading();
+        util.hideLoading();
         this.setData({
           categories: res.data,
           current: this.data.current_tmp || '5b06b677c2dfca6ccf1e935f'

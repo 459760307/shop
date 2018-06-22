@@ -24,7 +24,7 @@ Page({
       url: util.url + 'cms/home/index',
       success: res => {
         // console.log(res);
-        wx.hideLoading();
+        util.hideLoading();
         this.setData({
           result: res.data.data
         })

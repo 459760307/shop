@@ -1,15 +1,15 @@
 {
   "pages": [
-    "pages/index/index",
     "pages/cart/cart",
+    "pages/index/index",
     "pages/product_show/product_show",
+    "pages/product_list/product_list",
     "pages/me/me",
     "pages/favorite/favorite",
     "pages/discover/discover",
     "pages/register/register",
     "pages/login/login",
     "pages/vendors_info/vendors_info",
-    "pages/product_list/product_list",
     "pages/category/category",
     "pages/customer_info/customer_info",
     "pages/cart_two/cart_two"

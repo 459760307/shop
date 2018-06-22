@@ -17,7 +17,7 @@ Page({
         'access-token': wx.getStorageSync('access-token')
       },
       success: res => {
-        wx.hideLoading();
+        util.hideLoading();
         if (res.data.code === 1100003) {
           wx.navigateTo({
             url: '/pages/login/login',

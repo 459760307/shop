@@ -55,7 +55,7 @@
 
 .pro_filter_items .item {
   padding: 0 20rpx;
-  font-size: 27rpx;
+  font-size: 28rpx;
   flex: 1;
   text-align: center;
 }
@@ -77,10 +77,10 @@
   background: #fff;
   height: 90rpx;
   font-size: 28rpx;
-  padding: 0 70rpx 0 40rpx;
+  padding: 0 40rpx 0 40rpx;
 }
 
-.J_ping.active {
+.J_ping.active , .item.active, .item .active{
   color: #e93b3d;
 }
 

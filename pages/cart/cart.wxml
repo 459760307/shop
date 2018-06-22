@@ -1,6 +1,9 @@
-<view wx:if="{{isEmpty}}" class="empty">
+<block wx:if="{{isEmpty}}">
+<view class="empty">
   购物车空空如也~
 </view>
+<navigator style="text-align:center;font-size:28rpx;line-height:50rpx;" url="/pages/login/login">请登陆查看购物车</navigator>
+</block>
 <view wx:else>
   <view class="wrap">
     <view class="ul">
